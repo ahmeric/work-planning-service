@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,18 +38,21 @@ public class Shift {
    */
   @ManyToOne
   @JoinColumn(name = "worker_id")
+  @NotNull
   private Worker worker;
 
   /**
    * The date of the shift.
    */
   @Column(name = "shift_date")
+  @NotNull
   private LocalDate shiftDate;
 
   /**
    * The type of the shift (MORNING, AFTERNOON, or NIGHT).
    */
   @Enumerated(EnumType.STRING)
+  @NotNull
   private ShiftType shiftType;
 
 }
